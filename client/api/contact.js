@@ -45,9 +45,21 @@ export default async function handler(req, res) {
   }
 
   async function parseBody(request) {
-    if (request.body && Object.keys(request.body || {}).length > 0) {
-      return request.body;
+    if (request.body) {
+      // Vercel às vezes entrega body como string já lida
+      if (typeof request.body === "string") {
+        try {
+          return JSON.parse(request.body);
+        } catch {
+          return {};
+        }
+      }
+      // Ou como objeto já parseado
+      if (typeof request.body === "object" && Object.keys(request.body).length > 0) {
+        return request.body;
+      }
     }
+
     const raw = await new Promise((resolve, reject) => {
       let data = "";
       request.on("data", (chunk) => (data += chunk));
