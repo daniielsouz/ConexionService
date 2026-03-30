@@ -145,8 +145,10 @@ export default async function handler(req, res) {
       </table>
     `;
 
+    const senderEmail = (process.env.EMAIL_USER || "noreplyconexionservice@gmail.com").trim();
+
     await transporter.sendMail({
-      from: process.env.EMAIL_USER || "noreplyconexionservice@gmail.com",
+      from: `"Conexion Service" <${senderEmail}>`,
       to: EMAIL_TO,
       subject: `[New Contact] - Conexion Service - ${payload.name}`,
       replyTo: payload.email || undefined,
