@@ -51,7 +51,7 @@
   .carousel {
     --height: 180px;
     --gap: 12px;
-    --duration: 24000ms;
+    --duration: 16000ms;
   }
 
   .slide img {
@@ -63,5 +63,6 @@
   .carousel {
     --height: 150px;
     --gap: 10px;
+    --duration: 12000ms;
   }
 }
