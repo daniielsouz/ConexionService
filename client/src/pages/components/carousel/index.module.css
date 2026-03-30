@@ -54,8 +54,19 @@
     --duration: 16000ms;
   }
 
+  .viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track {
+    animation: none;
+  }
+
   .slide {
     min-width: 68vw;
+    scroll-snap-align: center;
   }
 
   .slide img {
