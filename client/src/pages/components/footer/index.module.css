@@ -151,6 +151,11 @@
 
 .inlineGrid input {
   width: 100%;
+  min-width: 0;
+}
+
+.inlineGrid input[type="datetime-local"] {
+  font-size: 0.95rem;
 }
 
 .footer_form form input,

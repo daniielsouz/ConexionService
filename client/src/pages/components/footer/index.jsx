@@ -49,6 +49,10 @@ function formatPropertyType(value) {
   return value.replace(/\d+/g, "");
 }
 
+function formatServiceRequested(value) {
+  return value.replace(/\d+/g, "");
+}
+
 function buildServiceDescription(serviceName) {
   return `Service requested: ${serviceName}
 Describe the service and include:
@@ -65,6 +69,7 @@ function Footer() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [serviceRequested, setServiceRequested] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
   const [area, setArea] = useState("");
   const [propertyType, setPropertyType] = useState("");
@@ -77,6 +82,7 @@ function Footer() {
     function handleServiceSelection(event) {
       const selectedService = event.detail?.serviceName;
       if (!selectedService) return;
+      setServiceRequested(formatServiceRequested(selectedService));
       setServiceDescription(buildServiceDescription(selectedService));
     }
 
@@ -109,6 +115,7 @@ function Footer() {
       name,
       email: email.trim(),
       phone,
+      serviceRequested,
       serviceDescription,
       area: area.trim(),
       propertyType: propertyType.trim(),
@@ -131,6 +138,7 @@ function Footer() {
         setName("");
         setEmail("");
         setPhone("");
+        setServiceRequested("");
         setServiceDescription("");
         setArea("");
         setPropertyType("");
@@ -212,6 +220,13 @@ function Footer() {
             placeholder="Phone: (xxx) xxx-xxxx"
             value={phone}
             onChange={(event) => setPhone(formatPhone(event.target.value))}
+          />
+
+          <input
+            type="text"
+            placeholder="Service requested:"
+            value={serviceRequested}
+            onChange={(event) => setServiceRequested(formatServiceRequested(event.target.value))}
           />
 
           <div className={styles.inlineGrid}>
