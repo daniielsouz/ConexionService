@@ -44,14 +44,25 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  let body = req.body;
-  if (!body || Object.keys(body).length === 0) {
+  async function parseBody(request) {
+    if (request.body && Object.keys(request.body || {}).length > 0) {
+      return request.body;
+    }
+    const raw = await new Promise((resolve, reject) => {
+      let data = "";
+      request.on("data", (chunk) => (data += chunk));
+      request.on("end", () => resolve(data));
+      request.on("error", reject);
+    });
+    if (!raw) return {};
     try {
-      body = JSON.parse(req.body || "{}");
+      return JSON.parse(raw);
     } catch {
-      body = {};
+      return {};
     }
   }
+
+  const body = await parseBody(req);
 
   const validation = validateContactPayload(body);
   if (validation.error) {
