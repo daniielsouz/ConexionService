@@ -211,6 +211,9 @@
 @media (max-width: 1024px) {
   .footer_Wrap {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "form"
+      "info";
     gap: 2rem;
   }
 
@@ -218,11 +221,13 @@
     padding-top: 0;
     align-items: center;
     text-align: center;
+    grid-area: info;
   }
 
   .footer_form {
     justify-self: stretch;
     max-width: none;
+    grid-area: form;
   }
 
   .footer_infos div,

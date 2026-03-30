@@ -54,13 +54,9 @@ function formatServiceRequested(value) {
 }
 
 function buildServiceDescription(serviceName) {
-  return `Service requested: ${serviceName}
-Describe the service and include:
-- Approximate area (m²)
-- Property type (house, condo, commercial)
-- City / location
-- Preferred timeline`;
+  return "";
 }
+
 
 function Footer() {
   const facebookUrl =
@@ -84,6 +80,10 @@ function Footer() {
       if (!selectedService) return;
       setServiceRequested(formatServiceRequested(selectedService));
       setServiceDescription(buildServiceDescription(selectedService));
+      const formEl = document.querySelector("#form form");
+      if (formEl) {
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
     window.addEventListener("quote-service-selected", handleServiceSelection);
