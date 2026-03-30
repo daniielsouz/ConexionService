@@ -49,13 +49,13 @@
 
 @media (max-width: 768px) {
   .carousel {
-    --height: 180px;
+    --height: 150px;
     --gap: 12px;
     --duration: 16000ms;
   }
 
   .slide {
-    min-width: 70vw;
+    min-width: 68vw;
   }
 
   .slide img {
@@ -65,12 +65,12 @@
 
 @media (max-width: 480px) {
   .carousel {
-    --height: 150px;
+    --height: 130px;
     --gap: 10px;
     --duration: 12000ms;
   }
 
   .slide {
-    min-width: 85vw;
+    min-width: 75vw;
   }
 }

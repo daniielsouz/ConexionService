@@ -135,6 +135,7 @@
 @media (max-width: 980px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
@@ -146,6 +147,10 @@
   .sectionIntro {
     justify-items: center;
     text-align: center;
+  }
+
+  .grid {
+    gap: 2.4rem;
   }
 }
 
@@ -160,5 +165,9 @@
 
   .label {
     font-size: 0.82rem;
+  }
+
+  .grid {
+    gap: 2.8rem;
   }
 }
