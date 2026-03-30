@@ -28,6 +28,10 @@ function validateContactPayload(body = {}) {
     email: sanitizeField(body.email, 160),
     phone: sanitizeField(body.phone, 30),
     serviceDescription: sanitizeField(body.serviceDescription, CONTACT_MAX_LENGTH),
+    area: sanitizeField(body.area, 20),
+    propertyType: sanitizeField(body.propertyType, 120),
+    city: sanitizeField(body.city, 120),
+    timeline: sanitizeField(body.timeline, 60),
   };
 
   const emailIsValid =
@@ -144,7 +148,7 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER || "noreplyconexionservice@gmail.com",
       to: EMAIL_TO,
-      subject: `New contact from ${payload.name}`,
+      subject: `[New Contact] - Conexion Service - ${payload.name}`,
       replyTo: payload.email || undefined,
       text: [
         `Name: ${payload.name}`,
