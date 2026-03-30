@@ -44,7 +44,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const validation = validateContactPayload(req.body);
+  let body = req.body;
+  if (!body || Object.keys(body).length === 0) {
+    try {
+      body = JSON.parse(req.body || "{}");
+    } catch {
+      body = {};
+    }
+  }
+
+  const validation = validateContactPayload(body);
   if (validation.error) {
     return res.status(400).json({ error: validation.error });
   }

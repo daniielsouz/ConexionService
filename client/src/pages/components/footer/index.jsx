@@ -139,7 +139,8 @@ function Footer() {
         return;
       }
 
-      setStatusMessage("Failed to send message. Please try again.");
+      const errorPayload = await response.json().catch(() => ({}));
+      setStatusMessage(errorPayload.error || "Failed to send message. Please check required fields.");
       setStatusType("error");
     } catch (error) {
       console.error(error);
