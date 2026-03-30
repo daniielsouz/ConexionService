@@ -1,0 +1,226 @@
+.wrap_About {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
+  align-items: end;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding: 5rem var(--container-x) 7rem;
+  background:
+    radial-gradient(circle at left top, rgba(15, 124, 117, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(13, 35, 34, 0.84) 0%, rgba(4, 16, 16, 0.88) 100%);
+  color: var(--text-color);
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.about_content {
+  display: grid;
+  gap: 1.5rem;
+  align-self: start;
+}
+
+.about_intro {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(249, 250, 251, 0.14);
+  border-radius: 999px;
+  background-color: rgba(249, 250, 251, 0.04);
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about_intro h3 {
+  max-width: 13ch;
+  font-size: 3.5rem;
+  line-height: 1.05;
+}
+
+.lead {
+  max-width: 62ch;
+  color: rgba(249, 250, 251, 0.76);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.about_body {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 760px;
+}
+
+.about_points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pointCard {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 210px;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(249, 250, 251, 0.08);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(16, 28, 27, 0.82));
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
+}
+
+.pointCard strong {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+}
+
+.pointCard span {
+  color: rgba(249, 250, 251, 0.72);
+  line-height: 1.5;
+}
+
+.about_copy {
+  display: grid;
+  gap: 1rem;
+  max-width: 62ch;
+}
+
+.about_copy p {
+  color: rgba(249, 250, 251, 0.82);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.about_visual {
+  position: relative;
+  min-height: 620px;
+  overflow: visible;
+  align-self: start;
+}
+
+.aboutImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: min(700px, 100%);
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 1200px) {
+  .wrap_About {
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
+
+  .about_intro h3 {
+    font-size: 3rem;
+  }
+
+  .about_visual {
+    min-height: 100%;
+  }
+
+  .aboutImage {
+    width: min(600px, 118%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .about_visual {
+    min-height: auto;
+  }
+
+  .aboutImage {
+    position: static;
+    display: block;
+    width: min(560px, 92vw);
+    height: auto;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .wrap_About {
+    grid-template-columns: 1fr;
+    padding-bottom: calc(var(--section-y) + 2rem);
+    align-items: start;
+  }
+
+  .about_content,
+  .about_intro,
+  .about_body,
+  .about_copy {
+    max-width: none;
+  }
+
+  .about_visual {
+    min-height: auto;
+  }
+
+  .about_intro h3 {
+    max-width: 15ch;
+    font-size: 2.5rem;
+  }
+
+  .aboutImage {
+    position: static;
+    left: auto;
+    right: auto;
+    transform: none;
+    top: auto;
+    width: min(520px, 88vw);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap_About {
+    padding: 3.5rem 1.5rem var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+
+  .about_intro h3 {
+    max-width: none;
+    font-size: 2.1rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .pointCard {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .about_visual {
+    min-height: auto;
+  }
+
+  .aboutImage {
+    position: static;
+    transform: none;
+    width: min(520px, 100%);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap_About {
+    padding: 3rem 1rem var(--section-y);
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+  }
+}

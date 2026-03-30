@@ -1,0 +1,213 @@
+@font-face {
+  font-family: "Nourd";
+  src: url("/font/Nourd/nourd_regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nourd";
+  src: url("/font/Nourd/nourd_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-size: 16px;
+  font-family: "Nourd";
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #06100f;
+  --secondary-color: #0f7c75;
+  --text-color: #f4f4ef;
+  --surface-color: #101a19;
+  --surface-muted: #172423;
+  --surface-elevated: rgba(255, 255, 255, 0.05);
+  --border-soft: rgba(244, 244, 239, 0.12);
+  --container-x: 10%;
+  --section-y: clamp(3rem, 7vw, 6rem);
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --container-x: 6%;
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --container-x: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-x: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-x: 1rem;
+  }
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(15, 124, 117, 0.16), transparent 20%),
+    radial-gradient(circle at 18% 28%, rgba(15, 124, 117, 0.1), transparent 24%),
+    radial-gradient(circle at 82% 62%, rgba(19, 93, 88, 0.12), transparent 26%),
+    linear-gradient(
+      180deg,
+      #0d2322 0%,
+      #041010 18%,
+      #0a2a28 40%,
+      #06100f 62%,
+      #123331 82%,
+      #06100f 100%
+    );
+  color: var(--text-color);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

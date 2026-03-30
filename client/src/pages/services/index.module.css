@@ -1,0 +1,233 @@
+.section_service {
+  position: relative;
+  overflow: hidden;
+  margin-top: -3.5rem;
+  padding: calc(var(--section-y) + 4.5rem) var(--container-x) var(--section-y);
+  background:
+    radial-gradient(circle at right top, rgba(15, 124, 117, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(4, 16, 16, 0.94) 0%, rgba(10, 42, 40, 0.9) 100%),
+    url("/img/backgroundService.png") center / cover no-repeat;
+  content-visibility: auto;
+  contain-intrinsic-size: 1600px;
+  z-index: 1;
+  color: var(--text-color);
+}
+
+.section_service > * {
+  position: relative;
+  z-index: 0;
+}
+
+.sectionIntro {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(249, 250, 251, 0.22);
+  border-radius: 999px;
+  background-color: rgba(249, 250, 251, 0.08);
+  color: #7ae8d7;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service_title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--text-color);
+}
+
+.serviceLead {
+  max-width: 62ch;
+  color: rgba(249, 250, 251, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.wrap_AllServices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.wrap_service {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  min-height: 280px;
+  padding: 1.35rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(18, 33, 31, 0.74)),
+    rgba(10, 21, 20, 0.78);
+  color: var(--text-color);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.servicesName,
+.servicesDescription,
+.servicesLink {
+  display: flex;
+  align-items: center;
+}
+
+.servicesName {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.servicesName img {
+  flex-shrink: 0;
+  width: 50px;
+}
+
+.servicesName h2 {
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.servicesName h2 p {
+  margin-top: 0.25rem;
+  color: rgba(249, 250, 251, 0.62);
+  font-size: 0.95rem;
+}
+
+.servicesDescription {
+  align-items: flex-start;
+}
+
+.servicesDescription span {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(249, 250, 251, 0.9);
+}
+
+.servicesLink {
+  gap: 0.4rem;
+}
+
+.servicesLink a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+}
+
+.servicesLink a:hover,
+.servicesLink a:hover ~ svg {
+  color: var(--text-color);
+}
+
+.servicesLink svg {
+  color: var(--secondary-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.stats {
+  width: 100%;
+  padding-top: 2.5rem;
+  text-align: center;
+}
+
+.value {
+  margin: 0 10px;
+}
+
+.textStat {
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .section_service {
+    padding-top: calc(var(--section-y) + 4rem);
+  }
+
+  .wrap_AllServices {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .section_service {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .wrap_AllServices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section_service {
+    margin-top: 0;
+    overflow: hidden;
+    padding: calc(var(--section-y) + 0.5rem) 1.5rem var(--section-y);
+  }
+
+  .sectionIntro {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .service_title {
+    text-align: center;
+  }
+
+  .wrap_AllServices {
+    grid-template-columns: 1fr;
+  }
+
+  .wrap_service {
+    min-height: auto;
+  }
+
+  .servicesName h2 {
+    font-size: 1.25rem;
+  }
+
+  .servicesDescription span {
+    font-size: 0.98rem;
+  }
+
+  .stats {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section_service {
+    padding: calc(var(--section-y) + 0.25rem) 1rem var(--section-y);
+  }
+
+  .wrap_service {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+  }
+
+  .servicesName {
+    gap: 0.75rem;
+  }
+
+  .servicesName img {
+    width: 42px;
+  }
+}
