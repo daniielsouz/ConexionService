@@ -155,7 +155,9 @@
 }
 
 .inlineGrid input[type="datetime-local"] {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  padding: 0.9rem;
+  box-sizing: border-box;
 }
 
 .footer_form form input,
@@ -284,5 +286,10 @@
   .footer_form form textarea,
   .footer_form form button {
     padding: 0.85rem;
+  }
+
+  .inlineGrid input[type="datetime-local"] {
+    font-size: 0.85rem;
+    padding: 0.8rem;
   }
 }

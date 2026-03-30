@@ -254,12 +254,6 @@ function Footer() {
               value={city}
               onChange={(event) => setCity(event.target.value)}
             />
-            <input
-              type="datetime-local"
-              placeholder="Preferred timeline:"
-              value={timeline}
-              onChange={(event) => setTimeline(event.target.value)}
-            />
           </div>
 
           <textarea
