@@ -264,10 +264,6 @@ function Footer() {
             value={serviceDescription}
             onChange={(event) => setServiceDescription(event.target.value)}
           />
-          <p className={styles.fieldHint}>
-            Describe the service and include the approximate area in m2, property
-            type, city, and preferred timeline.
-          </p>
 
           <button type="submit" disabled={statusType === "loading"}>
             {statusType === "loading" ? "Sending..." : "Submit"}
