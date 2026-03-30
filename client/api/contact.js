@@ -25,10 +25,15 @@ function validateContactPayload(body = {}) {
   };
 
   const emailIsValid =
-    !payload.email || /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(payload.email);
+    !payload.email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
 
-  if (!payload.name || !payload.phone || !payload.serviceDescription) {
-    return { error: "Missing required fields." };
+  const missing = [];
+  if (!payload.name) missing.push("name");
+  if (!payload.phone) missing.push("phone");
+  if (!payload.serviceDescription) missing.push("serviceDescription");
+
+  if (missing.length > 0) {
+    return { error: `Missing required fields: ${missing.join(", ")}` };
   }
 
   if (!emailIsValid) {
@@ -45,6 +50,8 @@ export default async function handler(req, res) {
   }
 
   async function parseBody(request) {
+    const contentType = String(request.headers["content-type"] || "").toLowerCase();
+
     if (request.body) {
       // Vercel às vezes entrega body como string já lida
       if (typeof request.body === "string") {
@@ -67,6 +74,21 @@ export default async function handler(req, res) {
       request.on("error", reject);
     });
     if (!raw) return {};
+
+    if (contentType.includes("application/json")) {
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return {};
+      }
+    }
+
+    if (contentType.includes("application/x-www-form-urlencoded")) {
+      const params = new URLSearchParams(raw);
+      return Object.fromEntries(params.entries());
+    }
+
+    // fallback: try JSON, senão vazio
     try {
       return JSON.parse(raw);
     } catch {
