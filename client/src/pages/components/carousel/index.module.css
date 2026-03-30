@@ -76,9 +76,7 @@
 
 @media (max-width: 480px) {
   .carousel {
-    --height: 130px;
-    --gap: 10px;
-    --duration: 12000ms;
+    display: none;
   }
 
   .slide {
