@@ -81,7 +81,7 @@ function BeforeAfter({ before, after, start = 50, height = 260 }) {
       </div>
       <div className={styles.handle} style={{ left: `${pos}%` }}>
         <span className={styles.bar} />
-        <span className={styles.knob}>↔</span>
+        <span className={styles.knob}>?</span>
       </div>
       <span className={`${styles.label} ${styles.labelBefore}`}>BEFORE</span>
       <span className={`${styles.label} ${styles.labelAfter}`}>AFTER</span>
@@ -115,3 +115,4 @@ function Statement() {
 }
 
 export default memo(Statement);
+
