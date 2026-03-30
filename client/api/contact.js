@@ -4,12 +4,15 @@ const CONTACT_MAX_LENGTH = 2000;
 const EMAIL_TO = process.env.EMAIL_TO || "danielsouz.dev@gmail.com";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  pool: true,
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: (process.env.EMAIL_USER || "").trim(),
+    pass: (process.env.EMAIL_PASS || "").trim(),
   },
+  tls: { minVersion: "TLSv1.2" },
+  connectionTimeout: 10000,
 });
 
 function sanitizeField(value, maxLength) {
@@ -123,6 +126,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error("contact-send-error", error);
-    return res.status(500).json({ error: "Failed to send message." });
+    return res.status(500).json({
+      error: "Failed to send message.",
+      detail: error.message || "smtp error",
+    });
   }
 }
