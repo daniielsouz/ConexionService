@@ -26,7 +26,7 @@ function InfiniteCarousel({
                 src={item.src}
                 alt={item.alt ?? `Slide ${i + 1}`}
                 loading={i === 0 ? "eager" : "lazy"}
-                fetchPriority={i === 0 ? "high" : "auto"}
+                fetchPriority={i === 0 ? "high" : "low"}
                 decoding="async"
                 draggable="false"
               />
