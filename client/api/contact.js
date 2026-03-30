@@ -2,6 +2,9 @@ import nodemailer from "nodemailer";
 
 const CONTACT_MAX_LENGTH = 2000;
 const EMAIL_TO = process.env.EMAIL_TO || "danielsouz.dev@gmail.com";
+const EMAIL_LOGO_URL =
+  process.env.EMAIL_LOGO_URL ||
+  "https://res.cloudinary.com/dmdobsh3w/image/upload/v1774894340/logo_okiuy4.png";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -109,6 +112,35 @@ export default async function handler(req, res) {
   const { payload } = validation;
 
   try {
+    const areaText = payload.area ? `${payload.area} m2` : "N/A";
+    const htmlBody = `
+      <table width="100%" cellpadding="0" cellspacing="0" style="font-family:'Segoe UI',Arial,sans-serif;background:#081110;padding:24px;">
+        <tr><td align="center" style="padding-bottom:18px;">
+          <img src="${EMAIL_LOGO_URL}" alt="Conexion Services" style="height:60px;width:auto;" />
+        </td></tr>
+        <tr><td style="max-width:680px;margin:0 auto;background:linear-gradient(180deg,#0fa189 0%,#0b7464 100%);border-radius:16px;padding:22px;box-shadow:0 14px 32px rgba(0,0,0,0.32);color:#fdfefe;">
+          <h2 style="margin:0 0 10px 0;font-size:22px;color:#ffffff;">New contact from the site</h2>
+          <p style="margin:0 0 16px 0;color:rgba(255,255,255,0.9);font-size:14px;">Lead received via contact form.</p>
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#0c1f1e;border-radius:12px;padding:14px;border:1px solid rgba(122,232,215,0.25);">
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Name</td><td style="padding:6px 0;color:#fdfefe;">${payload.name}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Email</td><td style="padding:6px 0;color:#fdfefe;">${payload.email || "N/A"}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Phone</td><td style="padding:6px 0;color:#fdfefe;">${payload.phone}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Area</td><td style="padding:6px 0;color:#fdfefe;">${areaText}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Property type</td><td style="padding:6px 0;color:#fdfefe;">${payload.propertyType || "N/A"}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">City</td><td style="padding:6px 0;color:#fdfefe;">${payload.city || "N/A"}</td></tr>
+            <tr><td style="padding:6px 0;color:#82ffe6;font-weight:800;">Preferred timeline</td><td style="padding:6px 0;color:#fdfefe;">${payload.timeline || "N/A"}</td></tr>
+          </table>
+          <div style="margin-top:16px;padding:16px;border:1px solid rgba(255,255,255,0.25);border-radius:12px;background:rgba(0,0,0,0.18);">
+            <p style="margin:0 0 8px 0;font-weight:800;color:#ffffff;">Service description</p>
+            <p style="margin:0;white-space:pre-wrap;line-height:1.6;color:#f4fbf9;">${payload.serviceDescription}</p>
+          </div>
+        </td></tr>
+        <tr><td align="center" style="padding-top:14px;color:#b6c6c3;font-size:12px;">
+          Sent automatically by the Conexion Services site.
+        </td></tr>
+      </table>
+    `;
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER || "noreplyconexionservice@gmail.com",
       to: EMAIL_TO,
@@ -118,9 +150,14 @@ export default async function handler(req, res) {
         `Name: ${payload.name}`,
         `Email: ${payload.email || "N/A"}`,
         `Phone: ${payload.phone}`,
+        `Area: ${areaText}`,
+        `Property type: ${payload.propertyType || "N/A"}`,
+        `City: ${payload.city || "N/A"}`,
+        `Preferred timeline: ${payload.timeline || "N/A"}`,
         "",
         payload.serviceDescription,
       ].join("\\n"),
+      html: htmlBody,
     });
 
     return res.status(200).json({ ok: true });
