@@ -54,6 +54,10 @@
     --duration: 16000ms;
   }
 
+  .slide {
+    min-width: 70vw;
+  }
+
   .slide img {
     border-radius: 14px;
   }
@@ -64,5 +68,9 @@
     --height: 150px;
     --gap: 10px;
     --duration: 12000ms;
+  }
+
+  .slide {
+    min-width: 85vw;
   }
 }
